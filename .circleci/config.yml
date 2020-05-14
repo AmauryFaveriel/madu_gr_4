@@ -87,8 +87,6 @@ jobs:
       - run:
           name: Create artifacts directory
           command: mkdir -p ~/repo/artifacts
-      - persist_to_workspace:
-          root: artifacts
 
 >>>>>>> c0c061c... Update CD
   build_client:
@@ -101,9 +99,12 @@ jobs:
       - checkout:
           path: ~/repo
       - setup_remote_docker
+<<<<<<< HEAD
       - run:
           name: Create artifacts directory
           command: mkdir -p ~/repo/artifacts
+=======
+>>>>>>> bf5e3b4... Update CD
       - run:
           name: Build client image
           command: docker build -t "${DOCKER_CLIENT_IMAGE_NAME}:${DOCKER_CLIENT_IMAGE_TAG}" ~/repo/client
@@ -125,9 +126,12 @@ jobs:
       - checkout:
           path: ~/repo
       - setup_remote_docker
+<<<<<<< HEAD
       - run:
           name: Create artifacts directory
           command: mkdir -p ~/repo/artifacts
+=======
+>>>>>>> bf5e3b4... Update CD
       - run:
           name: Build back-end image
           command: docker build -t "${DOCKER_BACK_END_IMAGE_NAME}:${DOCKER_BACK_END_IMAGE_TAG}" ~/repo/back-end
