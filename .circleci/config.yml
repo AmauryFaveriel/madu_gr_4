@@ -75,6 +75,22 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+<<<<<<< HEAD
+=======
+  setup_build_env:
+    docker:
+      - image: circleci/node:lts
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Create artifacts directory
+          command: mkdir -p ~/repo/artifacts
+      - persist_to_workspace:
+          root: artifacts
+
+>>>>>>> c0c061c... Update CD
   build_client:
     docker:
       - image: circleci/node:lts
