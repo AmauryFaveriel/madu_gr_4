@@ -212,7 +212,6 @@ workflows:
       - build_client:
           requires:
             - test_client
-<<<<<<< HEAD
           filters:
             branches:
               only:
@@ -224,17 +223,6 @@ workflows:
             branches:
               only:
                 - master
-=======
-          branches:
-            only:
-              - master
-      - build_back_end:
-          requires:
-            - test_back_end
-          branches:
-            only:
-              - master
->>>>>>> 4231c0c... Add branches filter for deployment
       - push_image_client:
           requires:
             - build_client
