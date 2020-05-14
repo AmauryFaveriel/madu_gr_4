@@ -75,20 +75,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-<<<<<<< HEAD
-=======
-  setup_build_env:
-    docker:
-      - image: circleci/node:lts
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-          name: Create artifacts directory
-          command: mkdir -p ~/repo/artifacts
-
->>>>>>> c0c061c... Update CD
   build_client:
     docker:
       - image: circleci/node:lts
@@ -99,18 +85,12 @@ jobs:
       - checkout:
           path: ~/repo
       - setup_remote_docker
-<<<<<<< HEAD
       - run:
           name: Create artifacts directory
           command: mkdir -p ~/repo/artifacts
-=======
->>>>>>> bf5e3b4... Update CD
       - run:
           name: Build client image
           command: docker build -t "${DOCKER_CLIENT_IMAGE_NAME}:${DOCKER_CLIENT_IMAGE_TAG}" ~/repo/client
-      - run:
-          name: tree
-          command: tree ~/repo
       - run:
           name: Save image in artifacts directory
           command: docker save "${DOCKER_CLIENT_IMAGE_NAME}:${DOCKER_CLIENT_IMAGE_TAG}" -o ~/repo/artifacts/image_client
@@ -129,12 +109,9 @@ jobs:
       - checkout:
           path: ~/repo
       - setup_remote_docker
-<<<<<<< HEAD
       - run:
           name: Create artifacts directory
           command: mkdir -p ~/repo/artifacts
-=======
->>>>>>> bf5e3b4... Update CD
       - run:
           name: Build back-end image
           command: docker build -t "${DOCKER_BACK_END_IMAGE_NAME}:${DOCKER_BACK_END_IMAGE_TAG}" ~/repo/back-end
