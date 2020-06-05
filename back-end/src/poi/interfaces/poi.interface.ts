@@ -1,17 +1,28 @@
 import * as mongoose from 'mongoose';
+import { ApiProperty } from '@nestjs/swagger';
 
-export interface Poi {
+export class Poi {
   _id: mongoose.Schema.Types.ObjectId;
+  @ApiProperty()
   id: string;
+  @ApiProperty()
   name: string;
+  @ApiProperty()
   category: string;
-  poiType: string;
-  street: string;
-  zipCode: number;
-  city: string;
+  @ApiProperty()
+  poiType: [string];
+  @ApiProperty()
+  address: {
+    value: string,
+    lat: number,
+    lng: number
+  };
+  @ApiProperty()
   phone: string;
+  @ApiProperty()
   email: string;
   siret: string;
+  @ApiProperty()
   openingTime: {
     monday: [
       {
@@ -56,8 +67,11 @@ export interface Poi {
       }
     ]
   };
+  @ApiProperty()
   priceRange: string;
+  @ApiProperty()
   description: string;
+  @ApiProperty()
   website: string;
   template: {
     id: string,
@@ -71,12 +85,19 @@ export interface Poi {
       }
     ]
   };
+  @ApiProperty()
   socialNetwork: string;
+  @ApiProperty()
   greenscore: number;
-  foodPreference: string;
+  @ApiProperty()
+  foodPreference: [string];
+  @ApiProperty()
   takeAway: boolean;
+  @ApiProperty()
   wheelchair: boolean;
   token: string;
+  @ApiProperty()
   status: string;
+  @ApiProperty()
   images: string[];
 }

@@ -3,11 +3,40 @@ import styled from "styled-components";
 import { Layout, Menu, Icon } from "antd";
 import { rem } from "polished";
 
+import { signOut } from "token-manager";
+
+const client = require("assets/icons/client.svg");
+const map = require("assets/icons/map.svg");
+const localisation = require("assets/icons/localisation.svg");
+const logout = require("assets/icons/logout.svg");
+
 const { Sider } = Layout;
 
 const CustomSider = styled(Sider)`
     width: ${rem(300)};
     background: #0a1240;
+    & > div {
+        display: flex;
+        flex-direction: column;
+    }
+`;
+
+const LogoutWrapper = styled.div`
+    flex: 1;
+    display: flex;
+    & > div {
+        align-self: flex-end;
+        margin: 20px;
+        & > i {
+            color: #fff;
+            font-size: ${rem(24)};
+            display: flex;
+
+            & > svg {
+                align-self: flex-end;
+            }
+        }
+    }
 `;
 
 const mainLogoStyle = {
@@ -32,20 +61,25 @@ export const SideBar = () => (
         </div>
         <Menu style={menuStyle} mode="inline">
             <Menu.Item key="1">
-                <Icon type="user" />
+                <Icon component={() => <img src={localisation} alt="localisation" />} />
                 <span>Points d'intêret</span>
                 <a href="/poi/list">Points d'intêret</a>
             </Menu.Item>
             <Menu.Item key="2">
-                <Icon type="upload" />
+                <Icon component={() => <img src={client} alt="client" />} />
                 <span>Clients</span>
-                <a href="/poi/list">Clients</a>
+                <a href="/client/list">Clients</a>
             </Menu.Item>
             <Menu.Item key="3">
-                <Icon type="upload" />
+                <Icon component={() => <img src={map} alt="map" />} />
                 <span>Map</span>
-                <a href="/map">Map</a>
+                <a href="/poi/map">Map</a>
             </Menu.Item>
         </Menu>
+        <LogoutWrapper>
+            <div>
+                <Icon onClick={signOut} component={() => <img src={logout} alt="logout" />} />
+            </div>
+        </LogoutWrapper>
     </CustomSider>
 );
