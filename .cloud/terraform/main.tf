@@ -24,12 +24,12 @@ resource "aws_key_pair" "ssh-key" {
   key_name   = "madu_ssh_key"
 }
 
-module "production" {
+module "staging" {
   source                  = "./application"
 
   instance_ami            = data.aws_ami.ubuntu.id
   application_key_name    = aws_key_pair.ssh-key.key_name
   client_instance_count   = 1
   back_end_instance_count = 1
-  stage                   = "production"
+  stage                   = "staging"
 }
